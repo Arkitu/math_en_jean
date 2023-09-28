@@ -1,5 +1,5 @@
 [package]
-name = "math_en_jean_exo_1"
+name = "math_en_jean"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 tokio = { version="*", features=["full"] }
+grid = "*"
