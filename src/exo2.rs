@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+use grid::Grid;
 
 fn evaluate_grid(grid: &Vec<i8>, size: usize) -> bool {
     let mut set = HashSet::new();
@@ -43,11 +44,14 @@ fn compute_line(grid: &mut Vec<i8>, size: usize, i: usize) -> bool {
 fn compute_grid(size: usize) -> bool {
     let mut grid: Vec<i8> = vec![-1; size.pow(2)];
     let result = compute_line(&mut grid, size, size.pow(2)-1);
-    dbg!(grid);
+    dbg!(Grid::from_vec(grid, size));
     result
 }
 
-pub async fn main() {
-    unsafe { backtrace_on_stack_overflow::enable() };
-    dbg!(compute_grid(7));
+pub async fn main(args: &[String]) {
+    let size = args.get(0)
+        .expect("No size gived !")
+        .parse::<usize>()
+        .expect("Invalid size !");
+    dbg!(compute_grid(size));
 }
