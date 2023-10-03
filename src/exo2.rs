@@ -11,13 +11,20 @@ fn evaluate_grid(grid: &Grid<i8>) -> bool {
         }
         set.insert(x);
     }
+    for col in grid.iter_cols() {
+        let x = col.map(|x|*x).reduce(|a,b| a+b).unwrap();
+        if set.contains(&x) {
+            return false
+        }
+        set.insert(x);
+    }
     true
 }
 
 fn compute_grid(size: usize) {
     let mut grid = Grid::init(size, size, -1);
     for i in 0..(size^2) {
-        let
+        grid.get_mut(i /, col)
     }
 }
 
